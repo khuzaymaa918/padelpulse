@@ -6,16 +6,20 @@ import { ShoppingBag, Search, Heart, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const totalItems = useCartStore((s) => s.totalItems);
+  const items = useCartStore((s) => s.items);
   const openCart = useCartStore((s) => s.openCart);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
 
   return (
     <>
@@ -23,11 +27,14 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5 transition-all duration-300 ${
           scrolled
             ? "bg-black/95 backdrop-blur-md border-b border-white/8"
-            : "bg-transparent"
+            : "bg-black/80 backdrop-blur-sm"
         }`}
       >
         {/* Logo */}
-        <Link href="/" className="font-display text-[1.5rem] tracking-[0.08em] text-white">
+        <Link
+          href="/"
+          className="font-display text-[1.5rem] tracking-[0.08em] text-white"
+        >
           PADEL<span className="text-white/35">PULSE</span>
         </Link>
 
@@ -63,9 +70,8 @@ export default function Navbar() {
             className="flex items-center gap-2 bg-gray border border-white/20 text-white text-[0.75rem] tracking-[0.1em] uppercase px-4 h-9 hover:bg-mid transition-all"
           >
             <ShoppingBag size={14} />
-            <span>Cart ({totalItems()})</span>
+            <span>Cart ({mounted ? totalItems : 0})</span>
           </button>
-          {/* Mobile menu toggle */}
           <button
             className="md:hidden text-white/55 hover:text-white"
             onClick={() => setMenuOpen(!menuOpen)}
