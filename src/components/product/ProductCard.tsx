@@ -19,7 +19,7 @@ export default function ProductCard({ product }: Props) {
 
   const primaryVariant = product.variants[0];
   const primaryImage = product.images[0];
-  const avgRating = product.reviews.length
+  const avgRating = product.reviews?.length
     ? product.reviews.reduce((s, r) => s + r.rating, 0) / product.reviews.length
     : null;
 
@@ -108,7 +108,7 @@ export default function ProductCard({ product }: Props) {
           {avgRating && (
             <div className="text-[0.62rem] text-white/40 tracking-[0.1em] mb-3">
               {"★".repeat(Math.round(avgRating))}{"☆".repeat(5 - Math.round(avgRating))}{" "}
-              <span className="text-white/25">({product.reviews.length})</span>
+              <span className="text-white/25">({product.reviews?.length})</span>
             </div>
           )}
           <div className="flex items-center justify-between">
