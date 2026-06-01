@@ -37,7 +37,7 @@ export default async function AdminOrderDetailPage({
             <div className="px-6 py-4 border-b border-white/8 text-[0.62rem] tracking-[0.2em] uppercase text-white/30">
               Order Items
             </div>
-            {order.items.map((item) => (
+            {order.items.map((item: any) => (
               <div key={item.id} className="flex items-center justify-between px-6 py-4 border-b border-white/6 last:border-0">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-[#111] flex items-center justify-center flex-shrink-0">

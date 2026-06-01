@@ -49,7 +49,7 @@ export default function OrdersClient({ orders }: { orders: any[] }) {
             No {activeTab === "All" ? "" : activeTab.toLowerCase()} orders yet
           </div>
         ) : (
-          filtered.map((order) => (
+          filtered.map((order: any) => (
             <div
               key={order.id}
               className="grid grid-cols-[1fr_140px_120px_120px_100px_80px] gap-4 px-6 py-4 border-b border-white/6 last:border-0 hover:bg-gray/30 transition-colors items-center"

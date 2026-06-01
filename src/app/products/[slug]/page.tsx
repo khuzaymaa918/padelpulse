@@ -432,7 +432,7 @@ export default function ProductPage() {
             <div className="flex-1 h-px bg-white/8" />
           </div>
           <div className="grid grid-cols-4 gap-px bg-white/8">
-            {related.map((p) => (
+            {related.map((p: any) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>

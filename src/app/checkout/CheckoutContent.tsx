@@ -120,7 +120,7 @@ export default function CheckoutContent() {
         Your Order
       </div>
       <div className="flex flex-col gap-0 mb-6">
-        {items.map((item) => (
+        {items.map((item: any) => (
           <div key={item.variantId} className="flex items-center gap-3 py-3 border-b border-white/6">
             <div className="w-10 h-10 bg-[#111] flex-shrink-0 relative">
               <div className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-white/25 rounded-full flex items-center justify-center text-[0.5rem] font-medium text-white">

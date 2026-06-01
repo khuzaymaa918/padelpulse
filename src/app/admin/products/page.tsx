@@ -42,9 +42,9 @@ export default async function AdminProductsPage() {
             <Link href="/admin/products/new" className="text-white underline">Add your first product</Link>
           </div>
         ) : (
-          products.map((product) => {
-            const minPrice = Math.min(...product.variants.map((v) => v.price));
-            const totalStock = product.variants.reduce((s, v) => s + v.stock, 0);
+          products.map((product: any) => {
+            const minPrice = Math.min(...product.variants.map((v: any) => v.price));
+            const totalStock = product.variants.reduce((s: number, v: any) => s + v.stock, 0);
             return (
               <div
                 key={product.id}
