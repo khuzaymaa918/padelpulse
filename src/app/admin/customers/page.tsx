@@ -30,7 +30,7 @@ export default async function AdminCustomersPage() {
             No customers yet
           </div>
         ) : (
-          customers.map((customer) => {
+          customers.map((customer: any) => {
             const totalSpent = customer.orders
               .filter((o) => o.paymentStatus === "PAID")
               .reduce((sum, o) => sum + o.totalAmount, 0);
