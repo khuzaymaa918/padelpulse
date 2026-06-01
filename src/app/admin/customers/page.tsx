@@ -32,8 +32,8 @@ export default async function AdminCustomersPage() {
         ) : (
           customers.map((customer: any) => {
             const totalSpent = customer.orders
-              .filter((o) => o.paymentStatus === "PAID")
-              .reduce((sum, o) => sum + o.totalAmount, 0);
+              .filter((o: any) => o.paymentStatus === "PAID")
+              .reduce((sum: number, o: any) => sum + o.totalAmount, 0);
             return (
               <div
                 key={customer.id}
